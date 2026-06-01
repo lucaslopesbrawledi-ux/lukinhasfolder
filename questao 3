@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int main() {
+    int altura, opcao;
+
+    printf("altura do triangulo: ");
+    scanf("%d", &altura);
+
+    do {
+        printf("quer o triangulo preenchido ou vazado?\n");
+        printf("1 - preenchido\n");
+        printf("2 - vazado\n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+        if (opcao != 1 && opcao != 2)
+            printf("opcao invalida\n");
+    } while (opcao != 1 && opcao != 2);
+
+    printf("\n");
+
+    for (int i = 1; i <= altura; i++) {
+        for (int j = 1; j <= i; j++) {
+            if (opcao == 1) {
+                printf("*");
+            } else {
+                if (j == 1 || j == i || i == altura) {
+                    printf("*");
+                } else {
+                    printf(" ");
+                }
+            }
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
