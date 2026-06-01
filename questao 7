@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int N;
+
+    do {
+        printf("digite o valor de N (>= 3): ");
+        scanf("%d", &N);
+        if (N < 3)
+            printf("invalido, N tem que ser maior ou igual a 3.\n");
+    } while (N < 3);
+
+    int matriz[N][N];
+    int topo = 0, base = N - 1, esq = 0, dir = N - 1;
+    int num = 1;
+
+    while (num <= N * N) {
+        for (int j = esq; j <= dir; j++)
+            matriz[topo][j] = num++;
+        topo++;
+
+        for (int i = topo; i <= base; i++)
+            matriz[i][dir] = num++;
+        dir--;
+
+        for (int j = dir; j >= esq; j--)
+            matriz[base][j] = num++;
+        base--;
+
+        for (int i = base; i >= topo; i--)
+            matriz[i][esq] = num++;
+        esq++;
+    }
+
+    int maxVal = N * N;
+    int largura = (int)log10(maxVal) + 2; 
+
+    printf("\n");
+
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("%*d", largura, matriz[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
