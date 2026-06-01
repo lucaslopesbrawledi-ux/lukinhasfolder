@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+int main() {
+    int B, L, A;
+
+    do {
+        printf("informe B (base da arvore, impar e >= 3): ");
+        scanf("%d", &B);
+        if (B < 3 || B % 2 == 0)
+            printf("invalido, B tem que ser impar e >= 3.\n");
+    } while (B < 3 || B % 2 == 0);
+
+    do {
+        printf("informe L (largura do tronco, impar, >= 1 e <= %d): ", B / 2);
+        scanf("%d", &L);
+        if (L < 1 || L % 2 == 0 || L > B / 2)
+            printf("invalido, L tem que ser impar, >= 1 e <= %d.\n", B / 2);
+    } while (L < 1 || L % 2 == 0 || L > B / 2);
+
+    do {
+        printf("informe A (altura do tronco, >= 2 e <= %d): ", B / 2);
+        scanf("%d", &A);
+        if (A < 2 || A > B / 2)
+            printf("invalido, A tem que ser >= 2 e <= %d.\n", B / 2);
+    } while (A < 2 || A > B / 2);
+
+    printf("\n");
+
+    int centro = B / 2;
+    int linhas_copa = (B / 2) + 1;
+
+    for (int i = 0; i < linhas_copa; i++) {
+        int estrelas = 2 * i + 1;
+        int espacos  = centro - i;
+
+        for (int s = 0; s < espacos; s++) printf(" ");
+        for (int j = 0; j < estrelas; j++) printf("*");
+        printf("\n");
+    }
+    int espacos_tronco = centro - (L / 2);
+
+    for (int i = 0; i < A; i++) {
+        for (int s = 0; s < espacos_tronco; s++) printf(" ");
+        for (int j = 0; j < L; j++) printf("*");
+        printf("\n");
+    }
+
+    return 0;
+}
