@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int main() {
+    int altura, opcao;
+
+    printf("altura do quadrado: ");
+    scanf("%d", &altura);
+
+    printf("quer o quadrado preenchido ou vazado?\n");
+    printf("1 - preenchido\n");
+    printf("2 - vazado\n");
+    printf("Opção: ");
+    scanf("%d", &opcao);
+
+    if (opcao != 1 && opcao != 2) {
+        printf("opcao invalida!\n");
+        return 1;
+    }
+
+    printf("\n");
+
+    for (int i = 0; i < altura; i++) {
+        for (int j = 0; j < altura; j++) {
+
+            if (opcao == 1) {
+                printf("*");
+            }
+            else {
+                if (i == 0 || i == altura - 1 ||
+                    j == 0 || j == altura - 1) {
+                    printf("*");
+                }
+                else {
+                    printf(" ");
+                }
+            }
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
