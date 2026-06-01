@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    int altura;
+
+    printf("altura do Triangulo de Pascal: ");
+    scanf("%d", &altura);
+
+    printf("\n");
+
+    long long tri[altura][altura];
+
+    for (int i = 0; i < altura; i++) {
+        tri[i][0] = 1;
+        tri[i][i] = 1;
+
+        for (int j = 1; j < i; j++) {
+            tri[i][j] = tri[i-1][j-1] + tri[i-1][j];
+        }
+    }
+
+    for (int i = 0; i < altura; i++) {
+        for (int s = 0; s < (altura - i - 1) * 2; s++) {
+            printf(" ");
+        }
+
+        for (int j = 0; j <= i; j++) {
+            if (j > 0) printf("   ");
+            printf("%lld", tri[i][j]);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
